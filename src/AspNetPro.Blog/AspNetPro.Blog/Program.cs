@@ -1,6 +1,15 @@
+using AspNetPro.Blog.Infrastruture.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<BlogContext>((optionsAction) =>
+{
+    var connString = builder.Configuration.GetConnectionString("BlogConnection");
+    optionsAction.UseMySQL(connString);
+});
 
 var app = builder.Build();
 

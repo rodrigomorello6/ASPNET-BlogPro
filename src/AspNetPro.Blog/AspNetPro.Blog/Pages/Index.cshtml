@@ -47,24 +47,18 @@
             <div class="col-lg-8">
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
+                    @foreach (var item in Model.Posts)
+                    {
                         <!-- Blog post-->
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="post.html">Read more →</a>
+                            <div class="small text-muted">Posted on @item.PublishedOn.ToString()</div>
+                            <h2 class="card-title h4">@item.Title</h2>
+                            <p class="card-text">@item.Summary</p>
+                            <a class="btn btn-primary" href="#">Read more →</a>
                         </div>
                     </div>
-                        <!-- Blog post-->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                            <a class="btn btn-primary" href="post.html">Read more →</a>
-                        </div>
-                    </div>
+                    }
                 </div>
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
