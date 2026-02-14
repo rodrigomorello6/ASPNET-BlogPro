@@ -4,7 +4,7 @@ using AspNetPro.Blog.Models.Entities.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AspNetPro.Blog.Pages;
+namespace AspNetPro.Blog.Pages.Posts;
 
 public class IndexModel(BlogContext blogContext) : PageModel
 {

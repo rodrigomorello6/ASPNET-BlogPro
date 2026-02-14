@@ -1,0 +1,21 @@
+﻿@page "/post/{postId:int}"
+@model DetailsModel
+@{
+    ViewData["Title"] = Model.Post.Title;
+    ViewData["PageContentClass"] = "mt-5";
+}
+
+<!-- Post content-->
+<article>
+    <!-- Post header-->
+    <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1">@Model.Post.Title</h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2">Posted on @Model.Post.PublishedOn</div>
+    </header>
+     <!-- Post content-->
+    <section class="mb-5">
+        @Html.Raw(Model.Post.Content)
+    </section>
+</article>
