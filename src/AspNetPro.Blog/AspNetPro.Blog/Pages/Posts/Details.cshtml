@@ -24,8 +24,25 @@
     <div class="card bg-light">
         <div class="card-body">
             <!-- Comment form-->
-            <form 
-                class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+            <form id="form-add-comment" method="post" class="mb-4">
+                
+                <input type="hidden" asp-for="CommentForm!.PostId" value="@Model.Post.PostId"/>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" asp-for="CommentForm!.Author" placeholder="Enter your name" maxlength="200" />
+                    <span asp-validation-for="CommentForm!.Author" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" rows="3" asp-for="CommentForm!.Content" placeholder="Join the discussion and leave a comment!"></textarea>
+                    <span asp-validation-for="CommentForm!.Content" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                     <button class="btn btn-primary" type="submit">
+                         Add comment
+                     </button>
+                </div>
             </form>
 
             <hr />
@@ -49,3 +66,8 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

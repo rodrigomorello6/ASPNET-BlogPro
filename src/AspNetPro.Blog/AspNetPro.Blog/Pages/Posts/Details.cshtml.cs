@@ -1,5 +1,7 @@
 using AspNetPro.Blog.Infrastruture.Data;
+using AspNetPro.Blog.Models.Entities;
 using AspNetPro.Blog.Models.Entities.ViewModel;
+using AspNetPro.Blog.Models.FormModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -8,9 +10,10 @@ namespace AspNetPro.Blog.Pages.Posts
 {
     public class DetailsModel(BlogContext blogContext) : PageModel
     {
+
         public PostDetailsViewModel? Post { get; set; }
 
-        public async Task<IActionResult> OnGet([FromRoute]int postId)
+        public async Task<IActionResult> OnGet([FromRoute] int postId)
         {
             this.Post = await blogContext.Posts
                  .Where(x => x.Id == postId)
@@ -24,17 +27,35 @@ namespace AspNetPro.Blog.Pages.Posts
                      {
                          Author = y.Author,
                          Content = y.Content,
-                         PublishedOn = y.PublishedOn.Value.ToString("dd/MM/yyyy HH:mm")
+                         PublishedOn = y.PublishedOn.Value.ToString("dd/MM/yyyy hh:mm")
                      })
                  })
                  .FirstOrDefaultAsync();
 
-            if (this.Post == null) 
+            if (this.Post == null)
             {
                 return NotFound();
             }
 
             return Page();
+        }
+
+        [BindProperty]
+        public CommentFormModel CommentForm { get; set; }
+
+        public async Task<IActionResult> OnPost()
+        {
+            var comment = new Comment
+            {
+                Author = CommentForm.Author,
+                Content = CommentForm.Content,
+                Post = await blogContext.Posts.FindAsync(CommentForm.PostId)
+            };
+
+            blogContext.Comments.Add(comment);
+            await blogContext.SaveChangesAsync();
+
+            return RedirectToPage("/Posts/Details", new { postId = CommentForm.PostId });
         }
     }
 }
