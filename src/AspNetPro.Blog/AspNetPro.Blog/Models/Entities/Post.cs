@@ -9,5 +9,7 @@ namespace AspNetPro.Blog.Models.Entities
         public string? Summary { get; set; }
         public string? Content { get; set; }
         public DateTime? PublishedOn { get; set; }
+
+        public ICollection<Comment>? Comments { get; set; } = new List<Comment>();
     }
 }

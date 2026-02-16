@@ -19,7 +19,13 @@ namespace AspNetPro.Blog.Pages.Posts
                      PostId = x.Id,
                      Title = x.Title,
                      Content = x.Content,
-                     PublishedOn = x.PublishedOn.Value.ToShortDateString()
+                     PublishedOn = x.PublishedOn.Value.ToShortDateString(),
+                     Comments = x.Comments.Select(y => new PostDetailsViewModel.CommentItem
+                     {
+                         Author = y.Author,
+                         Content = y.Content,
+                         PublishedOn = y.PublishedOn.Value.ToString("dd/MM/yyyy HH:mm")
+                     })
                  })
                  .FirstOrDefaultAsync();
 
