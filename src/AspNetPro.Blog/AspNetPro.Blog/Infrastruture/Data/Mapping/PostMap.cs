@@ -26,6 +26,9 @@ namespace AspNetPro.Blog.Infrastruture.Data.Mapping
             builder.Property(x => x.PublishedOn)
                 .HasColumnType("datetime")
                 .IsRequired();
+
+            builder.Property(x => x.Tag)
+                .HasMaxLength(150);
         }
     }
 }
