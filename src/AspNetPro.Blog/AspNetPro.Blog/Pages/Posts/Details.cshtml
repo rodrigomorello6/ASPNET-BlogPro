@@ -12,11 +12,27 @@
         <!-- Post title-->
         <h1 class="fw-bolder mb-1">@Model.Post.Title</h1>
         <!-- Post meta content-->
-        <div class="text-muted fst-italic mb-2">Posted on @Model.Post.PublishedOn</div>
+        <div class="text-muted fst-italic mb-2">
+            Posted on @Model.Post.PublishedOn
+            @if (Model.Post.Category != null)
+            {
+                <text>
+                    , in <a class="text-decoration-none" asp-page="/Posts/Index" asp-route-category="@Model.Post.Category.CategoryId">@Model.Post.Category.Name</a>
+                </text>
+            }
+        </div>
     </header>
      <!-- Post content-->
     <section class="mb-5">
         @Html.Raw(Model.Post.Content)
+    </section>
+
+    <section class="mb-3">
+        <i class="bg-info bi-tgs"></i>&nbsp;Tags:
+        @foreach (var tagName in Model.Post.GetTags())
+        {
+            <span class="badge bg-secondary">@tagName</span>
+        }
     </section>
 </article>
 

@@ -29,7 +29,15 @@ else
         {
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="small text-muted">Posted on @item.PublishedOn.ToString()</div>
+                    <div class="small text-muted">
+                        Posted on @item.PublishedOn.ToString()
+                        @if (item.Category != null)
+                        {
+                            <text>
+                                , in <a class="text-decoration-none" asp-page="/Posts/Index" asp-route-category="@item.Category.CategoryId">@item.Category.Name</a>
+                            </text>
+                        }
+                    </div>
                     <h2 class="card-title h4">@item.Title</h2>
                     <p class="card-text">@item.Summary</p>
                     <a class="btn btn-primary" asp-page="/Posts/Details" asp-route-postid="@item.PostId">Read more →</a>

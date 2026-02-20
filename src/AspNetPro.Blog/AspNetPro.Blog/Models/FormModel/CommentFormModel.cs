@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspNetPro.Blog.Models.Entities.FormModel
+namespace AspNetPro.Blog.Models.FormModel
 {
     public record CommentFormModel
     {

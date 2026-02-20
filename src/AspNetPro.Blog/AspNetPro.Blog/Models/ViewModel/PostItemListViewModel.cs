@@ -1,4 +1,6 @@
-﻿namespace AspNetPro.Blog.Models.ViewModel
+﻿using AspNetPro.Blog.Models.Entities;
+
+namespace AspNetPro.Blog.Models.ViewModel
 {
     public class PostItemListViewModel
     {
@@ -7,5 +9,13 @@
         public string Summary { get; set; }
         public string Content { get; set; }
         public string PublishedOn { get; set; }
+
+        public CategoryViewModel Category { get; set; }
+
+        public record CategoryViewModel
+        {
+            public int CategoryId { get; set; }
+            public string? Name { get; set; }
+        }
     }
 }

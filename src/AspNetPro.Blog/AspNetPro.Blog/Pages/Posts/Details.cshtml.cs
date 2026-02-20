@@ -1,6 +1,6 @@
 using AspNetPro.Blog.Infrastruture.Data;
 using AspNetPro.Blog.Models.Entities;
-using AspNetPro.Blog.Models.Entities.FormModel;
+using AspNetPro.Blog.Models.FormModel;
 using AspNetPro.Blog.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,13 +16,20 @@ namespace AspNetPro.Blog.Pages.Posts
         public async Task<IActionResult> OnGet([FromRoute] int postId)
         {
             this.Post = await blogContext.Posts
+                 .Include(x => x.Category)
                  .Where(x => x.Id == postId)
                  .Select(x => new PostDetailsViewModel
                  {
                      PostId = x.Id,
                      Title = x.Title,
                      Content = x.Content,
+                     Tags = x.Tag,
                      PublishedOn = x.PublishedOn.Value.ToShortDateString(),
+                        Category = new PostDetailsViewModel.CategoryViewModel
+                        {
+                            CategoryId = x.Category.Id,
+                            Name = x.Category.Name
+                        },
                      Comments = x.Comments.Select(y => new PostDetailsViewModel.CommentItem
                      {
                          Author = y.Author,
