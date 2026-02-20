@@ -1,7 +1,7 @@
 using AspNetPro.Blog.Infrastruture.Data;
 using AspNetPro.Blog.Models.Entities;
 using AspNetPro.Blog.Models.Entities.FormModel;
-using AspNetPro.Blog.Models.Entities.ViewModel;
+using AspNetPro.Blog.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;

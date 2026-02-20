@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CategoryListItem>
+
+<section>
+    <div class="card mb-4">
+        <div class="card-header">Categories</div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item">
+                        <a asp-page="/Posts/Index" asp-route-category="@item.Id" class="text-decoration-none">
+                            @item.Name (@item.TotalPosts)    
+                        </a>
+                    </li>    
+                }
+            </ul>
+        </div>
+    </div>
+</section>

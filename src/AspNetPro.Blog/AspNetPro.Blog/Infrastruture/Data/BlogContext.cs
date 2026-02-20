@@ -7,6 +7,7 @@ namespace AspNetPro.Blog.Infrastruture.Data
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public BlogContext(DbContextOptions<BlogContext> dbContextOptions) : base(dbContextOptions)
         {
             
