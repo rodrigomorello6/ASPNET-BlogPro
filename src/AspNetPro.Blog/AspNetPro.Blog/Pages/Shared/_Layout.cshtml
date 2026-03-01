@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>@ViewData["AppName"]"</title>
+    <title>@ViewData["AppName"]</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -19,7 +19,8 @@
     <partial name="Partials/_Header" />
     @* @await Html.PartialAsync("Partials/_Header") *@
 
-    @await RenderSectionAsync("Tagline", required: false)
+    @RenderSection("Tagline", required: false)
+    @* @await RenderSectionAsync("Tagline", required: false) *@
 
     <!-- Page content-->
     <div class="container @ViewData["PageContentClass"]">
