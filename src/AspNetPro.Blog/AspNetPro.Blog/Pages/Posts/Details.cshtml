@@ -1,7 +1,10 @@
-﻿@page "/post/{postId:int}"
+﻿@page "/{permalink}"
 @model DetailsModel
 @{
     ViewData["Title"] = Model.Post.Title;
+    ViewData["SEO_Description"] = Model.Post.Summary;
+    ViewData["SEO_Keywords"] = Model.Post.Tags;
+
     ViewData["PageContentClass"] = "mt-5";
     ViewData["NavItem.Home"] = "active";
 }
@@ -18,7 +21,7 @@
             @if (Model.Post.Category != null)
             {
                 <text>
-                    , in <a class="text-decoration-none" asp-page="/Posts/Index" asp-route-category="@Model.Post.Category.CategoryId">@Model.Post.Category.Name</a>
+                    , in <a  class="text-decoration-none" asp-page="/Posts/Index" asp-route-category="@Model.Post.Category.CategoryId">@Model.Post.Category.Name</a>
                 </text>
             }
         </div>

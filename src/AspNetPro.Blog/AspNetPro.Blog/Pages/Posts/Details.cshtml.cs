@@ -13,15 +13,16 @@ namespace AspNetPro.Blog.Pages.Posts
 
         public PostDetailsViewModel? Post { get; set; }
 
-        public async Task<IActionResult> OnGet([FromRoute] int postId)
+        public async Task<IActionResult> OnGetAsync([FromRoute] string permalink)
         {
             this.Post = await blogContext.Posts
                  .Include(x => x.Category)
-                 .Where(x => x.Id == postId)
+                 .Where(x => x.Permalink == permalink)
                  .Select(x => new PostDetailsViewModel
                  {
                      PostId = x.Id,
                      Title = x.Title,
+                     Summary = x.Summary,
                      Content = x.Content,
                      Tags = x.Tag,
                      PublishedOn = x.PublishedOn.Value.ToShortDateString(),

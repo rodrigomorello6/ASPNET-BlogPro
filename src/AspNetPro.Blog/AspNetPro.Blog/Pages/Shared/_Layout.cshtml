@@ -2,12 +2,18 @@
     ViewData["AppName"] = "ASP.NET PRO BLOG";
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="@ViewData["SEO_Description"]" />
+    <meta name="keywords" content="@ViewData["SEO_Keywords"]" />
+    <meta name="author" content="Rodrigo Morello" />
+    <meta name="copyright" content="&copy; Your Website 2026 @ViewData["AppName"]" />
+    <meta name="language" content="pt-br" />
+    <meta name="country" content="BRA" />
+    <meta name="currency" content="R$" />
+    <meta name="robots" content="index, follow" />
     <title>@ViewData["AppName"]</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />

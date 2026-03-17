@@ -11,6 +11,10 @@ namespace AspNetPro.Blog.Infrastruture.Data.Mapping
             builder.ToTable("Posts");
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Permalink)
+                    //.IsRequired()
+                    .HasMaxLength(100);
+
             builder.Property(x => x.Title)
                 .HasMaxLength(70)
                 .IsRequired();

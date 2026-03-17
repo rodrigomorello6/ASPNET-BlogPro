@@ -21,7 +21,7 @@ namespace AspNetPro.Blog.Components
             var model = await (from c in blogContext.Categories
                                select new CategoryListItem
                                {
-                                   Id = c.Id,
+                                   Permalink = c.Permalink,
                                    Name = c.Name,
                                    TotalPosts = c.Posts.Count()
                                })

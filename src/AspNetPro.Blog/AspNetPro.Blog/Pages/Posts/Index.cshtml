@@ -1,7 +1,10 @@
 ﻿@page "/"
 @model IndexModel
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Tudo sobre desenvolvimento web com ASP.NET e C#";
+    ViewData["SEO_Description"] = "Aprenda a criar aplicações web modernas e escaláveis com ASP.NET e C#. Dicas, tutoriais e as melhores práticas para desenvolvedores de todos os níveis.";
+    ViewData["SEO_Keywords"] = "ASP.NET MVC,ASP.NET Core, ASP.NET, Blog ASP.NET, C#, desenvolvimento web, tutoriais, dicas, melhores práticas, aplicações web, escaláveis";
+
     ViewData["NavItem.Home"] = "active";
 }
 
@@ -39,8 +42,10 @@ else
                             </text>
                         }
                     </div>
-                    <h2 class="card-title h4">@item.Title</h2>
-                    <p class="card-text">@item.Summary</p>
+                    <h2 class="card-title h4">
+                        <a asp-page="/Posts/Details" asp-route-postid="@item.PostId" class="text-decoration-none">@item.Title</a>
+                    </h2>
+                    <p class="card-text" >@item.Summary</p>
                     <a class="btn btn-primary" asp-page="/Posts/Details" asp-route-postid="@item.PostId">Read more →</a>
                 </div>
             </div>
