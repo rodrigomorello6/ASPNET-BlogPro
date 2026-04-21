@@ -1,0 +1,98 @@
+﻿@page "/admin/posts/add"
+@model AspNetPro.Blog.Areas.Admin.Pages.Posts.AddModel
+@{
+    ViewData["Title"] = "Create New Post";
+}
+
+<header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+    <div class="container-fluid px-4">
+        <div class="page-header-content">
+            <div class="row align-items-center justify-content-between pt-3">
+                <div class="col-auto mb-3">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="file-plus"></i></div>
+                        @ViewData["Title"]
+                    </h1>
+                </div>
+                <div class="col-12 col-xl-auto mb-3">
+                    <a class="btn btn-sm btn-light text-primary" asp-page="/Posts/Index">
+                        <i class="me-1" data-feather="arrow-left"></i>
+                        Back to All Posts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main page content-->
+<div class="container-fluid px-4">
+
+    <form method="post" role="form">
+        <div class="row gx-4">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header">Title</div>
+                    <div class="card-body">
+                        <input class="form-control" asp-for="PostForm!.Title" id="inputTitle" type="text" placeholder="Enter your post title..." />
+                        <span asp-validation-for="PostForm!.Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card card-header-actions mb-4">
+                    <div class="card-header">
+                        Summary
+                    </div>
+                    <div class="card-body">
+                        <textarea id="inputDescription"  asp-for="PostForm!.Summary" class="lh-base form-control" type="text rows="4"></textarea>
+                        <span asp-validation-for="PostForm!.Summary" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card card-header-actions mb-4 mb-lg-0">
+                    <div class="card-header">
+                        Content
+                    </div>
+                    <div class="card-body">
+                        <textarea id="post-body" asp-for="PostForm!.Content" class="form-control"></textarea>
+                        <span asp-validation-for="PostForm!.Content" class="text-danger"></span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-header-actions mb-4 mb-lg-0">
+                    <div class="card-header">
+                        Category
+                    </div>
+                    <div class="card-body">
+                        <input id="inputContent" asp-for="PostForm!.Category" class="form-control" />
+                        <span asp-validation-for="PostForm!.Category" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card card-header-actions mb-4">
+                    <div class="card-header">
+                        Tags
+                    </div>
+                    <div class="card-body">
+                        <input type="text" id="inputTags" asp-for="PostForm!.Tags" class="form-control" />
+                    </div>
+                </div>
+                <div class="card card-header-actions">
+                    <div class="card-header">
+                        Publish
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid">
+                            <button class="fw-500 btn btn-primary">
+                                Save
+                            </button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

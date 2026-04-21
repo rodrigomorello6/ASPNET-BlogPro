@@ -16,5 +16,10 @@ namespace AspNetPro.Blog.Models.Entities
 
         public ICollection<Comment>? Comments { get; set; } = new List<Comment>(0);
 
+        public Post()
+        { 
+            PublishedOn = DateTime.Now;
+        }
+
     }
 }
