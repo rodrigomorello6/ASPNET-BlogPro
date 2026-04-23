@@ -26,11 +26,11 @@ namespace AspNetPro.Blog.Pages.Posts
                      Content = x.Content,
                      Tags = x.Tag,
                      PublishedOn = x.PublishedOn.Value.ToShortDateString(),
-                        Category = new PostDetailsViewModel.CategoryViewModel
-                        {
-                            CategoryId = x.Category.Id,
-                            Name = x.Category.Name
-                        },
+                     Category = new PostDetailsViewModel.CategoryViewModel
+                     {
+                         CategoryId = x.Category.Id,
+                         Name = x.Category.Name
+                     },
                      Comments = x.Comments.Select(y => new PostDetailsViewModel.CommentItem
                      {
                          Author = y.Author,

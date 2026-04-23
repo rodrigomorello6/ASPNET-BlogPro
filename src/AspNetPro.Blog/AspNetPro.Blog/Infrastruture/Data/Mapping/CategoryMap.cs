@@ -1,7 +1,6 @@
 ﻿using AspNetPro.Blog.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ZstdSharp;
 
 namespace AspNetPro.Blog.Infrastruture.Data.Mapping
 {
@@ -24,6 +23,6 @@ namespace AspNetPro.Blog.Infrastruture.Data.Mapping
                 .WithOne(x => x.Category);
 
         }
-            
+
     }
 }

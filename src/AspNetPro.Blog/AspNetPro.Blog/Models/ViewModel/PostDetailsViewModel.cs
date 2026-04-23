@@ -15,7 +15,7 @@
         public IEnumerable<CommentItem> Comments { get; set; }
 
         public IEnumerable<string> GetTags()
-        { 
+        {
             if (String.IsNullOrWhiteSpace(this.Tags))
             {
                 return Enumerable.Empty<string>();

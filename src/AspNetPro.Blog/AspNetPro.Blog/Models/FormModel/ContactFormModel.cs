@@ -10,7 +10,7 @@ public record ContactFormModel
 
     [Required]
     [EmailAddress]
-    [StringLength (200)]
+    [StringLength(200)]
     public string? Email { get; set; }
 
     [Required]

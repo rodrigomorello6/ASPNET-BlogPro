@@ -1,4 +1,4 @@
-﻿namespace AspNetPro.Blog.Areas.Admin.Models
+﻿namespace AspNetPro.Blog.Areas.Admin.Models.ViewModel
 {
     public record PostListItemViewModel
     {

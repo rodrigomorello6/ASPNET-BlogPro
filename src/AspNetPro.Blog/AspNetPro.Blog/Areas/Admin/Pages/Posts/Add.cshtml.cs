@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetPro.Blog.Areas.Admin.Pages.Posts;
 
-public class AddModel(BlogContext blogContext) 
+public class AddModel(BlogContext blogContext)
     : PageModel
 {
     [BindProperty]

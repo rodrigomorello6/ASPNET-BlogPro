@@ -1,6 +1,4 @@
-﻿using AspNetPro.Blog.Models.Entities;
-
-namespace AspNetPro.Blog.Models.ViewModel
+﻿namespace AspNetPro.Blog.Models.ViewModel
 {
     public class PostItemListViewModel
     {

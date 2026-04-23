@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace AspNetPro.Blog.Models.Entities
+﻿namespace AspNetPro.Blog.Models.Entities
 {
     public class Comment
     {

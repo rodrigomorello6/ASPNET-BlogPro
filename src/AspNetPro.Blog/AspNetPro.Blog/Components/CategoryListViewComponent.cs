@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetPro.Blog.Components
 {
-    [ViewComponent(Name ="CategoryListViewComponent")]
+    [ViewComponent(Name = "CategoryListViewComponent")]
     public class CategoryListViewComponent : ViewComponent
     {
         private readonly BlogContext blogContext;

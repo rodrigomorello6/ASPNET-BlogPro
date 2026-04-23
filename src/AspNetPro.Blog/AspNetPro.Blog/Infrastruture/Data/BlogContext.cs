@@ -10,7 +10,7 @@ namespace AspNetPro.Blog.Infrastruture.Data
         public DbSet<Category> Categories { get; set; }
         public BlogContext(DbContextOptions<BlogContext> dbContextOptions) : base(dbContextOptions)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

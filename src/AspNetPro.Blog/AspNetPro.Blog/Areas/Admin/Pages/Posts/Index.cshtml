@@ -34,12 +34,19 @@
                 <thead>
                     <th>Title</th>
                     <th>Published On</th>
+                    <th>Action</th>
                 </thead>
                 @foreach (var item in Model.Posts)
                 {
                     <tr>
                         <td>@item.Title</td>
                         <td>@item.PublishedOn</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-page="/Posts/Edit" asp-route-postid="@item.PostId" >Edit</a>
+                            &nbsp;
+                            <a class="btn btn-danger btn-sm" asp-page="/Posts/Delete" asp-route-postid="@item.PostId">Delete</a>
+
+                        </td>
                     </tr>
                 }
             </table>

@@ -1,0 +1,42 @@
+﻿@page "/admin/posts/{postId:int}/delte"
+@model AspNetPro.Blog.Areas.Admin.Pages.Posts.DeleteModel
+@{
+    ViewData["Title"] = "Delete Post?";
+}
+
+<header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+    <div class="container-xl px-4">
+        <div class="page-header-content">
+            <div class="row align-items-center justify-content-between pt-3">
+                <div class="col-auto mb-3">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="file"></i></div>
+                        @ViewData["Title"]
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container-fluid px-4">
+    <div class="alert alert-red alert-solid alert-icon" role="alert">
+        <div class="alert-icon-aside">
+            <i class="far fa-flag"></i>
+        </div>
+        <div class="alert-icon-content">
+            <h3 class="alert-heading">Attention!</h3>
+            Are you sure delete this post?
+        </div>
+    </div>
+    <br />
+    <p>Title: <b>@Model.Post.Title</b></p>
+    <p>Summary: <b>@Model.Post.Summary</b></p>
+    <br />
+    <form class="form-vertical" method="post">
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-page="/Posts/Index" class="btn btn-dark">Cancel</a>
+        </div>
+    </form>
+</div>

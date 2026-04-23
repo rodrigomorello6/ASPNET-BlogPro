@@ -1,6 +1,5 @@
 ﻿using AspNetPro.Blog.Common;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 namespace AspNetPro.Blog.Areas.Admin.Models.FormModel
 {
@@ -29,5 +28,5 @@ namespace AspNetPro.Blog.Areas.Admin.Models.FormModel
         public string Tags { get; set; }
 
 
-    }   
+    }
 }

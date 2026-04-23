@@ -26,7 +26,7 @@ public class IndexModel(BlogContext blogContext) : PageModel
         }
 
         if (pageOptions.Category.HasValue)
-        { 
+        {
             posts = posts.Where(post => post.Category.Id == pageOptions.Category.Value);
         }
 
