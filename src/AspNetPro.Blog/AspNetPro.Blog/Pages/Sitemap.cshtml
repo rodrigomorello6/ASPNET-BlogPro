@@ -1,0 +1,30 @@
+﻿@page "/sitemap.xml"
+@model Sitemap
+@inject LinkGenerator _linkGenerator
+@{
+    Layout = null;
+    Response.ContentType = "text/xml";
+    var httpCtx = Response.HttpContext;
+}
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>@_linkGenerator.GetUriByPage(httpCtx, "/Posts/Index")</loc>
+    </url>
+    <url>
+        <loc>@_linkGenerator.GetUriByPage(httpCtx, "/Contact")</loc>
+    </url>
+    @foreach (var permalink in Model.CategoriesPermalink)
+    {
+        <url>
+            <loc>@_linkGenerator.GetUriByPage(httpCtx, "/Posts/Index", values: new { category = permalink })</loc>
+        </url>
+    }
+    @foreach (var permalink in Model.PostsPermalink)
+    {
+        <url>
+            <loc>@_linkGenerator.GetUriByPage(httpCtx, "/Posts/Details", values: new { permalink = permalink })</loc>
+        </url>
+    }
+</urlset>

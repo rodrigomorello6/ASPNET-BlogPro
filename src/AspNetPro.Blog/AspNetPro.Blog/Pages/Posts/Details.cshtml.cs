@@ -51,19 +51,31 @@ namespace AspNetPro.Blog.Pages.Posts
         [BindProperty]
         public CommentFormModel CommentForm { get; set; }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync([FromRoute] string permalink)
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var post = await blogContext.Posts.FirstOrDefaultAsync(p => p.Permalink == permalink);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
             var comment = new Comment
             {
                 Author = CommentForm.Author,
                 Content = CommentForm.Content,
-                Post = await blogContext.Posts.FindAsync(CommentForm.PostId)
+                Post = post,
+                PublishedOn = DateTime.Now
             };
 
             blogContext.Comments.Add(comment);
             await blogContext.SaveChangesAsync();
 
-            return RedirectToPage("/Posts/Details", new { postId = CommentForm.PostId });
+            return RedirectToPage("/Posts/Details", new { permalink });
         }
     }
 }

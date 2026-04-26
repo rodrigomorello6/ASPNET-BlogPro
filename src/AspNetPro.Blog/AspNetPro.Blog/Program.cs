@@ -1,4 +1,5 @@
 using AspNetPro.Blog.Infrastruture.Data;
+using AspNetPro.Blog.Infrastruture.Web;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,11 @@ builder.Services
         port: 587,
         username: config["MailSettings:Username"],
         password: config["MailSettings:Password"]);
+
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.ConstraintMap.Add("post", typeof(PostRouteConstraint));
+});
 
 var app = builder.Build();
 

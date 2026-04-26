@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AspNetPro.Blog.Areas.Admin.Pages.Posts;
 
 public class EditModel(BlogContext blogContext)
-    : PageModel
+    : BaseModel
 {
     [BindProperty]
     public PostFormModel PostForm { get; set; }
@@ -76,8 +76,18 @@ public class EditModel(BlogContext blogContext)
             post.Category = null;
         }
 
-        blogContext.Update(post);
-        await blogContext.SaveChangesAsync();
+
+        try
+        {
+            blogContext.Update(post);
+            await blogContext.SaveChangesAsync();
+
+            Success("Your post has been saved");
+        }
+        catch (Exception)
+        {
+            Error("Your post cannot saved");
+        }
 
         return Page();
     }

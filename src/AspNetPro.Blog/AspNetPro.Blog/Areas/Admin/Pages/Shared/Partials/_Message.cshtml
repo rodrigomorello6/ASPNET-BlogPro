@@ -1,0 +1,29 @@
+﻿@if (ViewData["MSG_SUCCESS"] != null)
+{
+    <div class="alert alert-success alert solid alert-icon" role="alert">
+        <div class="alert-icon-aside">
+            <i class="far fa-close"></i>
+        </div>
+        <div class="alert-icon-content">
+            <h3 class="alert-heading">YES!</h3>
+            @ViewData["MSG_SUCCESS"]
+            <button class="btn close" type="button" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+
+}
+
+@if (ViewData["MSG_ERROR"] != null)
+{
+    <div class="alert alert-red alert solid alert-icon" role="alert">
+        <div class="alert-icon-aside">
+            <i class="far fa-close"></i>
+        </div>
+        <div class="alert-icon-content">
+            <h3 class="alert-heading">Ouch!</h3>
+            @ViewData["MSG_ERROR"]
+            <button class="btn close" type="button" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+
+}

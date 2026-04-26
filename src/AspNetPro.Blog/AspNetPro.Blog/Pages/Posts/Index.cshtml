@@ -22,7 +22,7 @@
 
 @if (Model.Posts?.Count() == 0)
 {
-    <div class="alert alert-light text-center role="alert">
+    <div class="alert alert-light text-center" role="alert">
         Nenhum post encontrado
     </div>
 }
@@ -43,10 +43,10 @@ else
                         }
                     </div>
                     <h2 class="card-title h4">
-                        <a asp-page="/Posts/Details" asp-route-postid="@item.PostId" class="text-decoration-none">@item.Title</a>
+                        <a asp-page="/Posts/Details" asp-route-permalink="@item.Permalink" class="text-decoration-none">@item.Title</a>
                     </h2>
                     <p class="card-text" >@item.Summary</p>
-                    <a class="btn btn-primary" asp-page="/Posts/Details" asp-route-postid="@item.PostId">Read more →</a>
+                    <a class="btn btn-primary" asp-page="/Posts/Details" asp-route-permalink="@item.Permalink">Read more →</a>
                 </div>
             </div>
         }

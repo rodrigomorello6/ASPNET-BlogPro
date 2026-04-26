@@ -1,9 +1,6 @@
-﻿namespace AspNetPro.Blog.Models.ViewModel
+﻿public record CategoryListItem
 {
-    public record CategoryListItem
-    {
-        public string? Permalink { get; set; }
-        public string? Name { get; set; }
-        public int TotalPosts { get; set; }
-    }
+    public string? Permalink { get; set; }
+    public string? Name { get; set; }
+    public int TotalPosts { get; set; }
 }

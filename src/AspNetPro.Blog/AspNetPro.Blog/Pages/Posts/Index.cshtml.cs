@@ -5,6 +5,7 @@ using AspNetPro.Blog.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AspNetPro.Blog.Pages.Posts;
 
@@ -25,18 +26,24 @@ public class IndexModel(BlogContext blogContext) : PageModel
             );
         }
 
-        if (pageOptions.Category.HasValue)
+        if (!string.IsNullOrEmpty(pageOptions.Category))
         {
-            posts = posts.Where(post => post.Category.Id == pageOptions.Category.Value);
+            posts = posts.Where(post => post.Category.Permalink == pageOptions.Category);
         }
+
+        int pageNumber = pageOptions.Page ?? 1;
+        int pageSize = pageOptions.PageSize ?? 10;
 
         Posts = posts
             .OrderByDescending(x => x.PublishedOn)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .Select(x => new PostItemListViewModel
             {
                 PostId = x.Id,
                 Title = x.Title,
                 Summary = x.Summary,
+                Permalink = x.Permalink,
                 PublishedOn = x.PublishedOn.Value.ToShortDateString(),
                 Category = new PostItemListViewModel.CategoryViewModel
                 {

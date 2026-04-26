@@ -7,6 +7,7 @@
         public string Summary { get; set; }
         public string Content { get; set; }
         public string PublishedOn { get; set; }
+        public string Permalink { get; set; }
 
         public CategoryViewModel Category { get; set; }
 

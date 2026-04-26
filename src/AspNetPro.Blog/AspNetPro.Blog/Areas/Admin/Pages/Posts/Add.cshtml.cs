@@ -1,4 +1,4 @@
-using AspNetPro.Blog.Areas.Admin.Models.FormModel;
+  using AspNetPro.Blog.Areas.Admin.Models.FormModel;
 using AspNetPro.Blog.Common;
 using AspNetPro.Blog.Infrastruture.Data;
 using AspNetPro.Blog.Models.Entities;
@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AspNetPro.Blog.Areas.Admin.Pages.Posts;
 
 public class AddModel(BlogContext blogContext)
-    : PageModel
+    : BaseModel
 {
     [BindProperty]
     public PostFormModel PostForm { get; set; }
@@ -49,8 +49,22 @@ public class AddModel(BlogContext blogContext)
             newPost.Category = null;
         }
 
-        blogContext.Add(newPost);
-        await blogContext.SaveChangesAsync();
+        try
+        {
+            blogContext.Add(newPost);
+            await blogContext.SaveChangesAsync();
+
+            Success("Your post has been saved");
+        }
+        catch (Exception)
+        {
+            // log
+
+            Error("Your post cannot saved");
+            return Page();
+        }
+
+       
 
         return RedirectToPage("/Posts/Edit", new { postId = newPost.Id });
     }
