@@ -1,42 +1,120 @@
-# ASP.NET Pro Blog
+AspNetPro.Blog README
 
-Um sistema de blog moderno, rápido e responsivo, construído com as melhores práticas do ecossistema .NET. Este projeto utiliza a arquitetura Razor Pages para entregar uma experiência robusta focada em separação de responsabilidades (MVVM), performance e SEO.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=AspNetPro.Blog&fontSize=60&theme=dracula" />
+</div>
 
-![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet)
-![C#](https://img.shields.io/badge/C%23-10%2B-239120?logo=csharp)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2-7952B3?logo=bootstrap)
+# AspNetPro.Blog
 
-## Funcionalidades
+**Um sistema de blog moderno, rápido e responsivo, construído com as melhores práticas do ecossistema .NET.**  
+Arquitetura baseada em **Razor Pages** com foco em separação de responsabilidades, performance e SEO.
 
-* **Leitura de Artigos:** Visualização detalhada de posts com suporte a formatação rica de conteúdo.
-* **Sistema de Comentários:** Interação direta dos leitores nos artigos, com validação de dados no lado do cliente e do servidor.
-* **Categorização e Tags:** Organização eficiente de conteúdo, permitindo filtragem rápida.
-* **Busca Integrada:** Motor de busca dinâmico para encontrar posts por título, resumo ou conteúdo.
-* **Componentes Reutilizáveis:** Utilização avançada de `ViewComponents` para renderização independente (ex: Sidebar de categorias) e `Partial Views`.
-* **Design Responsivo:** Interface limpa e adaptável a dispositivos móveis, desenvolvida com Bootstrap 5.
+---
 
-## Tecnologias e Padrões Utilizados
+### Visão Geral
 
-* **Framework:** ASP.NET Core Razor Pages (.NET 10)
-* **Linguagem:** C# 10 / 12 (com uso de Primary Constructors)
-* **ORM:** Entity Framework Core (com projeção de ViewModels via LINQ para otimização de performance)
-* **Front-end:** HTML5, CSS3, Bootstrap 5.2, jQuery (para validações Unobtrusive)
-* **Arquitetura/Design Patterns:**
-  * Padrão MVVM (Model-View-ViewModel)
-  * Injeção de Dependência (DI)
-  * Repository Pattern / Encapsulamento de Data Access
-  * Execução Assíncrona (Async/Await) para escalabilidade
+AspNetPro.Blog é uma plataforma de conteúdo pensada para ser simples de manter e fácil de evoluir. Prioriza performance, segurança e experiência do leitor, oferecendo recursos essenciais para publicação e interação.
 
-## Roadmap e Próximos Passos
-[X] Deploy em ambiente de produção (Microsoft Azure).<br>
-*Porém estou pensado em migrar para Oracle OCI porque ela oferece uma VM gratis para testes.*
+---
 
-[ ] Configurar o mailgun para enviar emails de dentro do blog.
+### Funcionalidades Principais
 
-[ ] Área Administrativa (CRUD completo para Posts, Categorias e aprovação de Comentários).
+- **Leitura de Artigos**: Visualização detalhada de posts com suporte a formatação rica.
+- **Sistema de Comentários**: Envio e carregamento de comentários com validação cliente/servidor.
+- **Categorização e Tags**: Organização de conteúdo com filtros rápidos.
+- **Busca Integrada**: Busca por título, resumo e conteúdo.
+- **Componentes Reutilizáveis**: ViewComponents e Partial Views para renderização independente.
+- **Design Responsivo**: Interface adaptada para dispositivos móveis com Bootstrap 5.
+- **SEO**: Robots.txt e Sitemap gerados; roteamento otimizado.
 
-[ ] Sanitização de HTML (XSS Protection) no conteúdo dos posts.
+---
 
-[ ] Pipelines de CI/CD utilizando Azure DevOps.
+### Tecnologias e Padrões
 
-[ ] Implementação de Paginação Assíncrona na Home.
+- **Framework**: ASP.NET Core Razor Pages (.NET 10)  
+- **Linguagem**: C# 10 / 12  
+- **ORM**: Entity Framework Core (projeções via LINQ)  
+- **Front-end**: HTML5, CSS3, Bootstrap 5.2, jQuery (validações Unobtrusive)  
+- **Padrões**: MVVM, Injeção de Dependência, Repository Pattern, Async/Await
+
+---
+
+### Roadmap e Próximos Passos
+
+- **Concluído**
+  - Deploy em ambiente de produção (Microsoft Azure) ✅
+  - Robots.txt adicionado ✅
+  - Sitemap adicionado ✅
+  - Resolver de rotas adicionado ✅
+  - CRUD de posts completo ✅
+  - Painel administrativo inicial criado ✅
+  - Inclusão de posts via painel ✅
+  - Configurações secretas adicionadas ✅
+  - Configurar Mailgun para envio de e-mails ✅
+    
+- **Em planejamento**
+  - Migrar ambiente de testes para Oracle OCI (VM gratuita para testes) — avaliação em andamento
+  - Área Administrativa completa (CRUD para Posts, Categorias, aprovação de Comentários)
+  - Sanitização de HTML para proteção contra XSS
+  - Pipelines de CI/CD com Azure DevOps
+  - Implementação de paginação assíncrona na Home
+
+---
+
+### Como Rodar Localmente
+
+1. **Pré requisitos**
+   - .NET 10 SDK
+   - PostgreSQL ou outro banco compatível
+   - Node.js (opcional para tarefas front-end)
+
+2. **Clonar repositório**
+   ```bash
+   git clone https://github.com/rodrigomorello6/ASPNET-BlogPro.git
+   cd ASPNET-BlogPro/src/AspNetPro.Blog
+
+
+Configurar variáveis
+
+Copiar appsettings.Development.json.example para appsettings.Development.json
+
+Ajustar connection string e chaves secretas
+
+Executar migrações e iniciar
+```bash
+dotnet ef database update
+dotnet run
+```
+
+---
+Estrutura do Projeto
+
+/Pages — Razor Pages e handlers
+
+/ViewComponents — Componentes reutilizáveis (sidebar, listagens)
+
+/Data — Migrations e contexto EF Core
+
+/Services — Serviços de domínio e integrações
+
+/wwwroot — Assets estáticos (CSS, JS, imagens)
+---
+Boas Práticas e Qualidade
+
+Performance: projeções via LINQ para reduzir carga de memória
+
+Segurança: validação cliente/servidor; próximo passo: sanitização de HTML
+
+Manutenibilidade: separação de responsabilidades e patterns claros
+
+DevOps: preparar pipelines de CI/CD para builds, testes e deploy automatizados
+
+---
+Contato
+
+Autor: Rodrigo Morello
+
+GitHub: https://github.com/rodrigomorello6 (github.com in Bing)
+
+LinkedIn: https://www.linkedin.com/in/rodrigo-morello-dev/
+
